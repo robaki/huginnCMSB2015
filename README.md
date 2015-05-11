@@ -1,3 +1,5 @@
+(this is an archival version -- this repo will not be used in further development. I'll create another repo soon.)
+
 Huginn - an Active Learning system for Metabolic Network Models development
 
 0. Copyright info:
