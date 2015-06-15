@@ -1,4 +1,4 @@
-(this is an archival version -- this repo will not be used in further development. I'll create another repo soon.)
+(this is an archival version -- this repo will not be used in further development. Current version of Huginn can be found here: https://github.com/robaki/huginn )
 
 Huginn - an Active Learning system for Metabolic Network Models development
 
