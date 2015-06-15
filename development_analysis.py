@@ -689,7 +689,7 @@ def print_all_histories():
 
 
 def print_all_exps():
-	folder = 'pickled_archives_main' # pickled_archives_just_two_factor pickled_archives
+	folder = 'pickled_archives' # pickled_archives_just_two_factor pickled_archives
 	paths = get_all_paths(folder)
 	all_exps = []
 	for path in paths:
@@ -788,7 +788,7 @@ def detect_import_of_setup(archive):
 
 
 def plotting_all_with_drifts():
-	folder = 'pickled_archives_addit_runs'
+	folder = 'pickled_archives'
 	paths = get_all_paths(folder)
 	for path in paths:
 		full_path = '/'.join([folder,path])
@@ -946,7 +946,7 @@ def plot_with_drift_lines(Y_sequences_dev, X_sequences_dev, Y_sequences_drift, X
 
 
 def analyse_all_development_and_drift():
-	folder = 'pickled_archives_just_two_factor' # pickled_archives pickled_archives_just_two_factor pickled_archives_addit_runs
+	folder = 'pickled_archives' # pickled_archives pickled_archives_just_two_factor pickled_archives_addit_runs
 	paths = get_all_paths(folder)
 
 	paths.sort(key = lambda x: x.split('conf05_')[1])
@@ -1022,7 +1022,10 @@ def analyse_all_development_and_drift():
 	global_test_drifting_useful = []
 	global_test_last_drifting_useful = []
 
+#	print(results_collection)
+
 	for test_case in sorted(list(results_collection.keys())):
+#		print(results_collection[test_case])#TEST
 		total_decrease_perc = [x['tot_impr_prc'] for x in results_collection[test_case]]
 		global_total_decrease_perc.extend(total_decrease_perc)
 		tot_dev_perc = [x['tot_dev_prc'] for x in results_collection[test_case]]
@@ -1051,8 +1054,11 @@ def analyse_all_development_and_drift():
 		print('mean: %s' % mean(tot_dev_perc))
 		print('population std dev: %s' % pstdev(tot_dev_perc))
 		print('improvement during random drift')
-		print('mean: %s' % mean(tot_drft_perc))
-		print('population std dev: %s' % pstdev(tot_drft_perc))
+		if tot_drft_perc != []:
+			print('mean: %s' % mean(tot_drft_perc))
+			print('population std dev: %s' % pstdev(tot_drft_perc))
+		else:
+			print('no random drift')
 		print('\n')
 		print('improvement before first drift')
 		print('mean: %s' % mean(before_drift_perc))
@@ -1062,11 +1068,17 @@ def analyse_all_development_and_drift():
 		print('population std dev: %s' % pstdev(after_drift_perc))
 		print('\n')
 		print('improvement up to final drift')
-		print('mean: %s' % mean(prop_dev_perc))
-		print('population std dev: %s' % pstdev(prop_dev_perc))
+		if prop_dev_perc != []:
+			print('mean: %s' % mean(prop_dev_perc))
+			print('population std dev: %s' % pstdev(prop_dev_perc))
+		else:
+			print('no random drift')
 		print('improvement during the last drift')
-		print('mean: %s' % mean(last_drift_perc))
-		print('population std dev: %s' % pstdev(last_drift_perc))
+		if last_drift_perc != []:
+			print('mean: %s' % mean(last_drift_perc))
+			print('population std dev: %s' % pstdev(last_drift_perc))
+		else:
+			print('no random drift')
 		print('\n\n')
 
 	print('GLOBAL:')
@@ -1214,7 +1226,7 @@ def analyse_development_and_drift_one_run(Y_sequences_dev, X_sequences_dev, Y_se
 
 
 def print_all_revisions():
-	folder = 'pickled_archives_main' # pickled_archives_just_two_factor pickled_archives
+	folder = 'pickled_archives' # pickled_archives_just_two_factor pickled_archives
 	paths = get_all_paths(folder)
 	all_revs = []
 	for path in paths:
@@ -1223,14 +1235,14 @@ def print_all_revisions():
 		revs = get_list_of_revisions(arch)
 		all_revs.extend(revs)
 		# analyse this list
-#		print(path)
-#		rev_data = get_revision_data(revs)
-#		analyse_revision(rev_data)
-#		print('\n')
+		print(path)
+		rev_data = get_revision_data(revs)
+		analyse_revision(rev_data)
+		print('\n')
 	# analyse all exps
 	print("summary:")
 	rev_data = get_revision_data(all_revs)
-#	analyse_revision(rev_data)
+	analyse_revision(rev_data)
 	print('')
 	# some additional analysis
 	additional_revision_analysis(rev_data)
@@ -1347,11 +1359,11 @@ def get_revision_data(events_list):
 #plotting_all_with_drifts()
 #analyse_all_development_and_drift()
 print_all_revisions()
+#print_all_exps()
 
 
 #print_abs_difference_to_the_last_successful_cycle()
 #print_all_histories()
-#print_all_exps()
 #detect_all_import_of_setup()
 #print_all_avg_and_best_absolute_scores()
 #plot_best_abg_worst()

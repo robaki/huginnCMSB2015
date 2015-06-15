@@ -99,7 +99,8 @@ class Oracle:
 		exported_model = exporter.export_models_exp_design([copied_model])
 		exported_model_rules = exporter.models_rules(len(copied_model.intermediate_activities))
 		exported_display = exporter.export_display_for_oracle(expD)
-		inp = [exported_ent, exported_comp, exported_act, exported_model, exported_display, exported_model_rules]
+		exported_prediction_rules = exporter.predictions_rules() # debug: prediction rules are needed for two-factor experiments
+		inp = [exported_display, exported_ent, exported_comp, exported_act, exported_model, exported_prediction_rules, exported_model_rules]
 		inp = [val for sublist in inp for val in sublist] # flatten
 		return inp
 

@@ -17,10 +17,10 @@ class CostModel:
 
 	def generate_all_possible(self, entities, compartments, activities, setup_conds, import_activities):
 		# exp types:
-		self.types = {DetectionEntity:None, AdamTwoFactorExperiment:None, 
-			ReconstructionActivity:None, ReconstructionEnzReaction:None,
-			ReconstructionTransporterRequired:None, LocalisationEntity:None,
-			DetectionActivity:None}
+		self.types = {AdamTwoFactorExperiment:None}# DetectionEntity:None, AdamTwoFactorExperiment:None, 
+#			ReconstructionActivity:None, ReconstructionEnzReaction:None,
+#			ReconstructionTransporterRequired:None, LocalisationEntity:None,
+#			DetectionActivity:None
 		# compartments for checking localisation:
 		self.design_compartment = {'c_02':None, 'c_03':None, 'c_04':None, 'c_05':None,
 			'c_06':None, 'c_07':None, 'c_08':None, 'c_09':None, 'c_10':None, 'c_11':None,
