@@ -27,4 +27,4 @@ To run existing test cases use command ```./evaluator.py > log```. The process w
 
 
 3. Additional files:
-```./simulation_data_and_analysis.zip``` and ```./figures.zip``` contain files used in preparation of a manuscript about Huginn for the 13th conference on Computational Methods for Systems Biology.
+```./simulation_data_and_analysis.zip``` and ```./figures.zip``` contain files used in preparation of a manuscript about Huginn for the 13th conference on Computational Methods for Systems Biology. The paper can be downloaded from here:  http://link.springer.com/chapter/10.1007/978-3-319-23401-4_13 (behind a paywall - feel free to contact me to get a copy if your institution doesn't provide you access)
